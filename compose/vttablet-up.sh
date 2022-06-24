@@ -143,10 +143,14 @@ else
 fi
 
 
+mkdir -p "${VTDATAROOT}/tmp"
+printf -v tablet_logfile 'vttablet_%010d_querylog.txt' $uid
 echo "Starting vttablet..."
 exec $VTROOT/bin/vttablet \
   $TOPOLOGY_FLAGS \
   --logtostderr=true \
+  --log_dir $VTDATAROOT/tmp \
+  --log_queries_to_file $VTDATAROOT/tmp/$tablet_logfile \
   --tablet-path $alias \
   --tablet_hostname "$vthost" \
   --health_check_interval 5s \
