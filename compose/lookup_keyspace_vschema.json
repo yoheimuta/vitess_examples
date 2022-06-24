@@ -4,16 +4,16 @@
 		"messages_message_lookup": {
 			"column_vindexes": [
 				{
-					"column": "id",
-					"name": "hash"
+					"column": "message",
+					"name": "unicode_loose_md5"
 				}
 			]
 		},
 		"tokens_token_lookup": {
 			"column_vindexes": [
 				{
-					"column": "id",
-					"name": "hash"
+					"column": "token",
+					"name": "unicode_loose_md5"
 				}
 			]
 		}
@@ -21,6 +21,9 @@
 	"vindexes": {
 		"hash": {
 			"type": "hash"
+		},
+		"unicode_loose_md5": {
+			"type": "unicode_loose_md5"
 		}
 	}
 }

@@ -31,7 +31,7 @@
 			"type": "hash"
 		},
 		"messages_message_lookup": {
-			"type": "lookup_hash",
+			"type": "lookup_hash_unique",
 			"params": {
 				"table": "lookup_keyspace.messages_message_lookup",
 				"from": "message",
@@ -41,7 +41,7 @@
 			"owner": "messages"
 		},
 		"tokens_token_lookup": {
-			"type": "lookup_hash",
+			"type": "lookup_hash_unique",
 			"params": {
 				"table": "lookup_keyspace.tokens_token_lookup",
 				"from": "token",
