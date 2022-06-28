@@ -163,6 +163,8 @@ services:
     environment:
     - TOPOLOGY_FLAGS=-topo_implementation consul -topo_global_server_address consul1:8500
       -topo_global_root vitess/global
+    - KEYSPACES=test_keyspace lookup_keyspace
+    - GRPC_PORT=15999
     - EXTERNAL_DB=0
     - DB_USER=
     - DB_PASS=
@@ -245,23 +247,6 @@ services:
     - "3306"
     volumes:
     - .:/script
-  vtctlclient101:
-    command:
-      - sh
-      - -c
-      - /script/setup_shards.sh
-    depends_on:
-      - vttablet101
-      - vttablet102
-    environment:
-      - KEYSPACE=test_keyspace
-      - SHARD=-80
-      - TARGETTAB=test-0000000101
-      - SLEEPTIME=10
-      - VTCTLD_SERVER=
-    image: vitess/lite:${VITESS_TAG:-latest}
-    volumes:
-      - .:/script
   vttablet201:
     command:
     - sh
@@ -336,23 +321,6 @@ services:
     - "3306"
     volumes:
     - .:/script
-  vtctlclient201:
-    command:
-      - sh
-      - -c
-      - /script/setup_shards.sh
-    depends_on:
-      - vttablet201
-      - vttablet202
-    environment:
-      - KEYSPACE=test_keyspace
-      - SHARD=80-
-      - TARGETTAB=test-0000000201
-      - SLEEPTIME=10
-      - VTCTLD_SERVER=
-    image: vitess/lite:${VITESS_TAG:-latest}
-    volumes:
-      - .:/script
   vttablet301:
     command:
     - sh
@@ -427,23 +395,6 @@ services:
     - "3306"
     volumes:
     - .:/script
-  vtctlclient301:
-    command:
-      - sh
-      - -c
-      - /script/setup_shards.sh
-    depends_on:
-      - vttablet301
-      - vttablet302
-    environment:
-      - KEYSPACE=lookup_keyspace
-      - SHARD=-
-      - TARGETTAB=test-0000000301
-      - SLEEPTIME=10
-      - VTCTLD_SERVER=
-    image: vitess/lite:${VITESS_TAG:-latest}
-    volumes:
-      - .:/script
   vtwork:
     command:
     - sh

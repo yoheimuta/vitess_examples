@@ -22,31 +22,27 @@ compose_consul1_1                      docker-entrypoint.sh agent ...   Up      
                                                                                        8600/udp
 compose_consul2_1                      docker-entrypoint.sh agent ...   Up             8300/tcp, 8301/tcp, 8301/udp, 8302/tcp, 8302/udp, 8400/tcp, 8500/tcp, 8600/tcp, 8600/udp
 compose_consul3_1                      docker-entrypoint.sh agent ...   Up             8300/tcp, 8301/tcp, 8301/udp, 8302/tcp, 8302/udp, 8400/tcp, 8500/tcp, 8600/tcp, 8600/udp
-compose_external_db_host_1             docker-entrypoint.sh --ser ...   Up (healthy)   0.0.0.0:51016->3306/tcp, 33060/tcp
+compose_external_db_host_1             docker-entrypoint.sh --ser ...   Up (healthy)   0.0.0.0:56444->3306/tcp, 33060/tcp
 compose_schemaload_lookup_keyspace_1   sh -c /script/schemaload.sh      Exit 0
 compose_schemaload_test_keyspace_1     sh -c /script/schemaload.sh      Exit 0
 compose_vreplication_1                 sh -c [ $EXTERNAL_DB -eq 1 ...   Exit 0
-compose_vtctlclient101_1               sh -c /script/setup_shards.sh    Exit 0
-compose_vtctlclient201_1               sh -c /script/setup_shards.sh    Exit 0
-compose_vtctlclient301_1               sh -c /script/setup_shards.sh    Exit 0
-compose_vtctld_1                       sh -c  /vt/bin/vtctld -top ...   Up             0.0.0.0:51028->15999/tcp, 0.0.0.0:15000->8080/tcp,:::15000->8080/tcp
-compose_vtgate_1                       sh -c /script/run-forever. ...   Up             0.0.0.0:15306->15306/tcp,:::15306->15306/tcp, 0.0.0.0:51190->15999/tcp,
+compose_vtctld_1                       sh -c  /vt/bin/vtctld -top ...   Up             0.0.0.0:56518->15999/tcp, 0.0.0.0:15000->8080/tcp,:::15000->8080/tcp
+compose_vtgate_1                       sh -c /script/run-forever. ...   Up             0.0.0.0:15306->15306/tcp,:::15306->15306/tcp, 0.0.0.0:56534->15999/tcp,
                                                                                        0.0.0.0:15099->8080/tcp,:::15099->8080/tcp
 compose_vtorc_1                        sh -c /script/vtorc-up.sh        Up             0.0.0.0:13000->3000/tcp,:::13000->3000/tcp
-compose_vttablet101_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:51039->15999/tcp, 0.0.0.0:51040->3306/tcp,
+compose_vttablet101_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:56549->15999/tcp, 0.0.0.0:56550->3306/tcp,
                                                                                        0.0.0.0:15101->8080/tcp,:::15101->8080/tcp
-compose_vttablet102_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:51043->15999/tcp, 0.0.0.0:51044->3306/tcp,
+compose_vttablet102_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:56553->15999/tcp, 0.0.0.0:56554->3306/tcp,
                                                                                        0.0.0.0:15102->8080/tcp,:::15102->8080/tcp
-compose_vttablet201_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:51041->15999/tcp, 0.0.0.0:51042->3306/tcp,
+compose_vttablet201_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:56547->15999/tcp, 0.0.0.0:56548->3306/tcp,
                                                                                        0.0.0.0:15201->8080/tcp,:::15201->8080/tcp
-compose_vttablet202_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:51034->15999/tcp, 0.0.0.0:51035->3306/tcp,
+compose_vttablet202_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:56528->15999/tcp, 0.0.0.0:56529->3306/tcp,
                                                                                        0.0.0.0:15202->8080/tcp,:::15202->8080/tcp
-compose_vttablet301_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:51032->15999/tcp, 0.0.0.0:51033->3306/tcp,
+compose_vttablet301_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:56551->15999/tcp, 0.0.0.0:56552->3306/tcp,
                                                                                        0.0.0.0:15301->8080/tcp,:::15301->8080/tcp
-compose_vttablet302_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:51030->15999/tcp, 0.0.0.0:51031->3306/tcp,
+compose_vttablet302_1                  sh -c /script/vttablet-up. ...   Up (healthy)   0.0.0.0:56545->15999/tcp, 0.0.0.0:56546->3306/tcp,
                                                                                        0.0.0.0:15302->8080/tcp,:::15302->8080/tcp
-compose_vtwork_1                       sh -c /vt/bin/vtworker -to ...   Up             0.0.0.0:51036->15999/tcp, 0.0.0.0:51037->8080/tcp
-(base) compose❯                  
+compose_vtwork_1                       sh -c /vt/bin/vtworker -to ...   Up             0.0.0.0:56539->15999/tcp, 0.0.0.0:56540->8080/tcp
 ```
 
 ### Check the status of the containers
