@@ -163,6 +163,8 @@ services:
     environment:
     - TOPOLOGY_FLAGS=-topo_implementation consul -topo_global_server_address consul1:8500
       -topo_global_root vitess/global
+    - KEYSPACES=test_keyspace lookup_keyspace
+    - GRPC_PORT=15999
     - EXTERNAL_DB=0
     - DB_USER=
     - DB_PASS=
